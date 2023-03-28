@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/69417647/228303342-147adadc-0cb9-4dc0-9304-9cd0a79032e5.png)
+
 # Hired Job Search App
 
 The Hired Job Search App is a React Native app that helps users search for job opportunities using the JSearch API on Rapid API. With this app, users can search for jobs based on different criteria, such as job title, location, and company. The app is designed to be easy to use, with a simple and intuitive interface.

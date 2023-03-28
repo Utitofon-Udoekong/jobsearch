@@ -14,9 +14,9 @@ class COLORS {
 }
 
 class FONT {
-  static const regular = "DMRegular";
-  static const medium = "DMMedium";
-  static const bold = "DMBold";
+  static const regular = FontWeight.normal;
+  static const medium = FontWeight.w500;
+  static const bold = FontWeight.bold;
 }
 
 class SIZES {
@@ -46,6 +46,8 @@ class SHADOWS {
 }
 
 class TextStyles {
-  static const title = TextStyle(fontFamily: FONT.regular, fontSize: SIZES.large, color: COLORS.secondary);
+  static const title = TextStyle(fontWeight: FONT.bold, fontSize: SIZES.xLarge, color: COLORS.primary);
+  static const subTitle = TextStyle(fontWeight: FONT.regular, fontSize: SIZES.large, color: COLORS.secondary);
 }
+
 
