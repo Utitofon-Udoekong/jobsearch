@@ -11,6 +11,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
         leading: const HeaderIcon(
           icon: Icons.menu,
         ),
@@ -20,6 +22,7 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(SIZES.large),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Welcome",
@@ -37,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const CustomTextField(),
+                    const Expanded(child: CustomTextField()),
                     const SizedBox(
                       width: 10,
                     ),
@@ -45,6 +48,7 @@ class HomeScreen extends StatelessWidget {
                       icon: const Icon(
                         Icons.search,
                         size: 25,
+                        color: Colors.white
                       ),
                       color: COLORS.tertiary,
                       onTap: () {},
@@ -59,9 +63,13 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: SIZES.medium,
                 ),
-                Wrap(
-                  runSpacing: 10,
-                  spacing: 10,
+                GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  childAspectRatio: 16 / 5,
                   children: List.generate(cards.length, (index) {
                     final card = cards[index];
                     return CustomCard(title: card.title, color: card.color);
@@ -79,7 +87,9 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: SIZES.medium,
                 ),
-                
+                ElevatedButton(onPressed: (){
+
+                }, child: const Text("get data", style: TextStyles.title,))
               ],
             ),
           ),
@@ -101,8 +111,10 @@ class CustomCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: getScreenWidth(context) / 2,
+        // width: getScreenWidth(context) / 2,
+        height: 50,
         padding: const EdgeInsets.all(SIZES.xSmall),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(SIZES.small), color: color),
         child: Text(
