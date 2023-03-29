@@ -19,14 +19,14 @@ class JobCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            ActionIcon(icon: Image.network(checkImageURL(job.employer_logo!) ? job.employer_logo! : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg"), color: COLORS.white),
+            ActionIcon(icon: Image.network(checkImageURL(job.employerLogo!) ? job.employerLogo! : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg"), color: COLORS.white),
             const SizedBox(width: SIZES.medium,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(job.job_title, style: TextStyles.title.copyWith(fontSize: SIZES.medium),),
+                Text(job.jobTitle ?? 'N/A', style: TextStyles.title.copyWith(fontSize: SIZES.medium),),
                 const SizedBox(height: 3,),
-                Text((job.job_employment_type ?? "N/A").toUpperCase(), style: const TextStyle(fontSize: SIZES.small + 2, fontWeight: FONT.regular, color: COLORS.gray),),
+                Text((job.jobEmploymentType ?? "N/A").toUpperCase(), style: const TextStyle(fontSize: SIZES.small + 2, fontWeight: FONT.regular, color: COLORS.gray),),
               ],
             )
           ],

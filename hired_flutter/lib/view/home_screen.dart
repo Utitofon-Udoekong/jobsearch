@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hired_flutter/constants/custom_lists.dart';
 import 'package:hired_flutter/constants/theme.dart';
 import 'package:hired_flutter/constants/utils.dart';
+import 'package:hired_flutter/controller/home_controller.dart';
 import 'package:hired_flutter/view/widgets/custom_text_field.dart';
 import 'package:hired_flutter/view/widgets/screen_header_button.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.put(HomeController());
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -88,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                   height: SIZES.medium,
                 ),
                 ElevatedButton(onPressed: (){
-
+                  homeController.getData();
                 }, child: const Text("get data", style: TextStyles.title,))
               ],
             ),

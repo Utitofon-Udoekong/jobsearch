@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:hired_flutter/models/job_model.dart';
+import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'dart:convert';
 
@@ -8,11 +9,24 @@ class HomeController extends GetxController{
   var error = "";
   var data = [];
   Future<void> getData() async {
-    final http = HttpClient();
-     var url = Uri.parse("https://api.coingecko.com/api/v3/coins");
-      var response = await http.getUrl(url);
-      var json = await response.done;
-      print(json);
+     var url = Uri.https("jsearch.p.rapidapi.com","/search",{
+      "query": "Vuejs developer",
+      "page": "1"
+     });
+      var response = await http.get(url, headers: {
+        "X-RapidAPI-Key": 'd26b33c631mshcd49fd4eb646daap1538abjsn2f9ba2c6c420',
+        "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+      });
+      // print("resposne");
+      // print(response.body);
+      print("json");
+      List<Job> jobs = [];
+      List<dynamic> json = jsonDecode(response.body);
+      json.map((e) {
+        var job = Job.fromJson(e);
+        jobs.add(job);
+      });
+      print(jobs);
       // var value = json['market_data']['current_price'][''].toString();
   }
 }
@@ -21,8 +35,8 @@ class HomeController extends GetxController{
 //                 method: "GET",
 //                 url: `https://jsearch.p.rapidapi.com/search`,
 //                 headers: {
-//                     "X-RapidAPI-Key": 'd26b33c631mshcd49fd4eb646daap1538abjsn2f9ba2c6c420',
-//                     "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+                    // "X-RapidAPI-Key": 'd26b33c631mshcd49fd4eb646daap1538abjsn2f9ba2c6c420',
+                    // "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
 //                 },
 //                 params: {
 //                     query: params.id,
