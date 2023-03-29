@@ -35,7 +35,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
           var job = Job.fromJson(item);
           jobs.add(job);
         }
-        emit(state.copyWith(isLoading: false, popularJobs: popularJobList));
+        emit(state.copyWith(isLoading: false, popularJobs: job));
       }else{
         emit(state.copyWith(isLoading: false));
       }
