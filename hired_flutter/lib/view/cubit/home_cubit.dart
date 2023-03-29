@@ -3,7 +3,7 @@ import 'package:hired_flutter/models/job_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert'
+import 'dart:convert';
 
 
 part 'home_state.dart';
