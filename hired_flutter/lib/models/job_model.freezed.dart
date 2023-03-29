@@ -35,9 +35,7 @@ mixin _$Job {
   @JsonKey(name: 'job_description')
   String? get jobDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_is_remote')
-  String? get jobIsRemote => throw _privateConstructorUsedError;
-  @JsonKey(name: 'job_posted_at_timestamp')
-  String? get jobPostedatTimestamp => throw _privateConstructorUsedError;
+  bool? get jobIsRemote => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_posted_at_datetime_utc')
   String? get jobPostedAtDatetimeUtc => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_city')
@@ -49,9 +47,9 @@ mixin _$Job {
   @JsonKey(name: 'job_google_link')
   String? get jobGoogleLink => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_min_salary')
-  String? get jobMinSalary => throw _privateConstructorUsedError;
+  int? get jobMinSalary => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_max_salary')
-  String? get jobMaxSalary => throw _privateConstructorUsedError;
+  int? get jobMaxSalary => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_salary_currency')
   String? get jobSalaryCurrency => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_highlights')
@@ -83,9 +81,7 @@ abstract class $JobCopyWith<$Res> {
       @JsonKey(name: 'job_description')
           String? jobDescription,
       @JsonKey(name: 'job_is_remote')
-          String? jobIsRemote,
-      @JsonKey(name: 'job_posted_at_timestamp')
-          String? jobPostedatTimestamp,
+          bool? jobIsRemote,
       @JsonKey(name: 'job_posted_at_datetime_utc')
           String? jobPostedAtDatetimeUtc,
       @JsonKey(name: 'job_city')
@@ -97,9 +93,9 @@ abstract class $JobCopyWith<$Res> {
       @JsonKey(name: 'job_google_link')
           String? jobGoogleLink,
       @JsonKey(name: 'job_min_salary')
-          String? jobMinSalary,
+          int? jobMinSalary,
       @JsonKey(name: 'job_max_salary')
-          String? jobMaxSalary,
+          int? jobMaxSalary,
       @JsonKey(name: 'job_salary_currency')
           String? jobSalaryCurrency,
       @JsonKey(name: 'job_highlights')
@@ -128,7 +124,6 @@ class _$JobCopyWithImpl<$Res, $Val extends Job> implements $JobCopyWith<$Res> {
     Object? jobApplyLink = freezed,
     Object? jobDescription = freezed,
     Object? jobIsRemote = freezed,
-    Object? jobPostedatTimestamp = freezed,
     Object? jobPostedAtDatetimeUtc = freezed,
     Object? jobCity = freezed,
     Object? jobState = freezed,
@@ -171,11 +166,7 @@ class _$JobCopyWithImpl<$Res, $Val extends Job> implements $JobCopyWith<$Res> {
       jobIsRemote: freezed == jobIsRemote
           ? _value.jobIsRemote
           : jobIsRemote // ignore: cast_nullable_to_non_nullable
-              as String?,
-      jobPostedatTimestamp: freezed == jobPostedatTimestamp
-          ? _value.jobPostedatTimestamp
-          : jobPostedatTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       jobPostedAtDatetimeUtc: freezed == jobPostedAtDatetimeUtc
           ? _value.jobPostedAtDatetimeUtc
           : jobPostedAtDatetimeUtc // ignore: cast_nullable_to_non_nullable
@@ -199,11 +190,11 @@ class _$JobCopyWithImpl<$Res, $Val extends Job> implements $JobCopyWith<$Res> {
       jobMinSalary: freezed == jobMinSalary
           ? _value.jobMinSalary
           : jobMinSalary // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       jobMaxSalary: freezed == jobMaxSalary
           ? _value.jobMaxSalary
           : jobMaxSalary // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       jobSalaryCurrency: freezed == jobSalaryCurrency
           ? _value.jobSalaryCurrency
           : jobSalaryCurrency // ignore: cast_nullable_to_non_nullable
@@ -250,9 +241,7 @@ abstract class _$$_JobCopyWith<$Res> implements $JobCopyWith<$Res> {
       @JsonKey(name: 'job_description')
           String? jobDescription,
       @JsonKey(name: 'job_is_remote')
-          String? jobIsRemote,
-      @JsonKey(name: 'job_posted_at_timestamp')
-          String? jobPostedatTimestamp,
+          bool? jobIsRemote,
       @JsonKey(name: 'job_posted_at_datetime_utc')
           String? jobPostedAtDatetimeUtc,
       @JsonKey(name: 'job_city')
@@ -264,9 +253,9 @@ abstract class _$$_JobCopyWith<$Res> implements $JobCopyWith<$Res> {
       @JsonKey(name: 'job_google_link')
           String? jobGoogleLink,
       @JsonKey(name: 'job_min_salary')
-          String? jobMinSalary,
+          int? jobMinSalary,
       @JsonKey(name: 'job_max_salary')
-          String? jobMaxSalary,
+          int? jobMaxSalary,
       @JsonKey(name: 'job_salary_currency')
           String? jobSalaryCurrency,
       @JsonKey(name: 'job_highlights')
@@ -293,7 +282,6 @@ class __$$_JobCopyWithImpl<$Res> extends _$JobCopyWithImpl<$Res, _$_Job>
     Object? jobApplyLink = freezed,
     Object? jobDescription = freezed,
     Object? jobIsRemote = freezed,
-    Object? jobPostedatTimestamp = freezed,
     Object? jobPostedAtDatetimeUtc = freezed,
     Object? jobCity = freezed,
     Object? jobState = freezed,
@@ -336,11 +324,7 @@ class __$$_JobCopyWithImpl<$Res> extends _$JobCopyWithImpl<$Res, _$_Job>
       jobIsRemote: freezed == jobIsRemote
           ? _value.jobIsRemote
           : jobIsRemote // ignore: cast_nullable_to_non_nullable
-              as String?,
-      jobPostedatTimestamp: freezed == jobPostedatTimestamp
-          ? _value.jobPostedatTimestamp
-          : jobPostedatTimestamp // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       jobPostedAtDatetimeUtc: freezed == jobPostedAtDatetimeUtc
           ? _value.jobPostedAtDatetimeUtc
           : jobPostedAtDatetimeUtc // ignore: cast_nullable_to_non_nullable
@@ -364,11 +348,11 @@ class __$$_JobCopyWithImpl<$Res> extends _$JobCopyWithImpl<$Res, _$_Job>
       jobMinSalary: freezed == jobMinSalary
           ? _value.jobMinSalary
           : jobMinSalary // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       jobMaxSalary: freezed == jobMaxSalary
           ? _value.jobMaxSalary
           : jobMaxSalary // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       jobSalaryCurrency: freezed == jobSalaryCurrency
           ? _value.jobSalaryCurrency
           : jobSalaryCurrency // ignore: cast_nullable_to_non_nullable
@@ -393,7 +377,6 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
       @JsonKey(name: 'job_apply_link') this.jobApplyLink,
       @JsonKey(name: 'job_description') this.jobDescription,
       @JsonKey(name: 'job_is_remote') this.jobIsRemote,
-      @JsonKey(name: 'job_posted_at_timestamp') this.jobPostedatTimestamp,
       @JsonKey(name: 'job_posted_at_datetime_utc') this.jobPostedAtDatetimeUtc,
       @JsonKey(name: 'job_city') this.jobCity,
       @JsonKey(name: 'job_state') this.jobState,
@@ -429,10 +412,7 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
   final String? jobDescription;
   @override
   @JsonKey(name: 'job_is_remote')
-  final String? jobIsRemote;
-  @override
-  @JsonKey(name: 'job_posted_at_timestamp')
-  final String? jobPostedatTimestamp;
+  final bool? jobIsRemote;
   @override
   @JsonKey(name: 'job_posted_at_datetime_utc')
   final String? jobPostedAtDatetimeUtc;
@@ -450,10 +430,10 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
   final String? jobGoogleLink;
   @override
   @JsonKey(name: 'job_min_salary')
-  final String? jobMinSalary;
+  final int? jobMinSalary;
   @override
   @JsonKey(name: 'job_max_salary')
-  final String? jobMaxSalary;
+  final int? jobMaxSalary;
   @override
   @JsonKey(name: 'job_salary_currency')
   final String? jobSalaryCurrency;
@@ -463,7 +443,7 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Job(employerName: $employerName, jobId: $jobId, jobTitle: $jobTitle, employerLogo: $employerLogo, jobEmploymentType: $jobEmploymentType, jobApplyLink: $jobApplyLink, jobDescription: $jobDescription, jobIsRemote: $jobIsRemote, jobPostedatTimestamp: $jobPostedatTimestamp, jobPostedAtDatetimeUtc: $jobPostedAtDatetimeUtc, jobCity: $jobCity, jobState: $jobState, jobCountry: $jobCountry, jobGoogleLink: $jobGoogleLink, jobMinSalary: $jobMinSalary, jobMaxSalary: $jobMaxSalary, jobSalaryCurrency: $jobSalaryCurrency, jobHighlights: $jobHighlights)';
+    return 'Job(employerName: $employerName, jobId: $jobId, jobTitle: $jobTitle, employerLogo: $employerLogo, jobEmploymentType: $jobEmploymentType, jobApplyLink: $jobApplyLink, jobDescription: $jobDescription, jobIsRemote: $jobIsRemote, jobPostedAtDatetimeUtc: $jobPostedAtDatetimeUtc, jobCity: $jobCity, jobState: $jobState, jobCountry: $jobCountry, jobGoogleLink: $jobGoogleLink, jobMinSalary: $jobMinSalary, jobMaxSalary: $jobMaxSalary, jobSalaryCurrency: $jobSalaryCurrency, jobHighlights: $jobHighlights)';
   }
 
   @override
@@ -479,7 +459,6 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
       ..add(DiagnosticsProperty('jobApplyLink', jobApplyLink))
       ..add(DiagnosticsProperty('jobDescription', jobDescription))
       ..add(DiagnosticsProperty('jobIsRemote', jobIsRemote))
-      ..add(DiagnosticsProperty('jobPostedatTimestamp', jobPostedatTimestamp))
       ..add(
           DiagnosticsProperty('jobPostedAtDatetimeUtc', jobPostedAtDatetimeUtc))
       ..add(DiagnosticsProperty('jobCity', jobCity))
@@ -512,8 +491,6 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
                 other.jobDescription == jobDescription) &&
             (identical(other.jobIsRemote, jobIsRemote) ||
                 other.jobIsRemote == jobIsRemote) &&
-            (identical(other.jobPostedatTimestamp, jobPostedatTimestamp) ||
-                other.jobPostedatTimestamp == jobPostedatTimestamp) &&
             (identical(other.jobPostedAtDatetimeUtc, jobPostedAtDatetimeUtc) ||
                 other.jobPostedAtDatetimeUtc == jobPostedAtDatetimeUtc) &&
             (identical(other.jobCity, jobCity) || other.jobCity == jobCity) &&
@@ -545,7 +522,6 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
       jobApplyLink,
       jobDescription,
       jobIsRemote,
-      jobPostedatTimestamp,
       jobPostedAtDatetimeUtc,
       jobCity,
       jobState,
@@ -587,9 +563,7 @@ abstract class _Job implements Job {
       @JsonKey(name: 'job_description')
           final String? jobDescription,
       @JsonKey(name: 'job_is_remote')
-          final String? jobIsRemote,
-      @JsonKey(name: 'job_posted_at_timestamp')
-          final String? jobPostedatTimestamp,
+          final bool? jobIsRemote,
       @JsonKey(name: 'job_posted_at_datetime_utc')
           final String? jobPostedAtDatetimeUtc,
       @JsonKey(name: 'job_city')
@@ -601,9 +575,9 @@ abstract class _Job implements Job {
       @JsonKey(name: 'job_google_link')
           final String? jobGoogleLink,
       @JsonKey(name: 'job_min_salary')
-          final String? jobMinSalary,
+          final int? jobMinSalary,
       @JsonKey(name: 'job_max_salary')
-          final String? jobMaxSalary,
+          final int? jobMaxSalary,
       @JsonKey(name: 'job_salary_currency')
           final String? jobSalaryCurrency,
       @JsonKey(name: 'job_highlights')
@@ -634,10 +608,7 @@ abstract class _Job implements Job {
   String? get jobDescription;
   @override
   @JsonKey(name: 'job_is_remote')
-  String? get jobIsRemote;
-  @override
-  @JsonKey(name: 'job_posted_at_timestamp')
-  String? get jobPostedatTimestamp;
+  bool? get jobIsRemote;
   @override
   @JsonKey(name: 'job_posted_at_datetime_utc')
   String? get jobPostedAtDatetimeUtc;
@@ -655,10 +626,10 @@ abstract class _Job implements Job {
   String? get jobGoogleLink;
   @override
   @JsonKey(name: 'job_min_salary')
-  String? get jobMinSalary;
+  int? get jobMinSalary;
   @override
   @JsonKey(name: 'job_max_salary')
-  String? get jobMaxSalary;
+  int? get jobMaxSalary;
   @override
   @JsonKey(name: 'job_salary_currency')
   String? get jobSalaryCurrency;
@@ -680,8 +651,6 @@ mixin _$JobHighlights {
   List<String>? get qualifications => throw _privateConstructorUsedError;
   @JsonKey(name: 'Responsibilities')
   List<String>? get responsibilities => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Benefits')
-  List<String>? get benefits => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -697,8 +666,7 @@ abstract class $JobHighlightsCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'Qualifications') List<String>? qualifications,
-      @JsonKey(name: 'Responsibilities') List<String>? responsibilities,
-      @JsonKey(name: 'Benefits') List<String>? benefits});
+      @JsonKey(name: 'Responsibilities') List<String>? responsibilities});
 }
 
 /// @nodoc
@@ -716,7 +684,6 @@ class _$JobHighlightsCopyWithImpl<$Res, $Val extends JobHighlights>
   $Res call({
     Object? qualifications = freezed,
     Object? responsibilities = freezed,
-    Object? benefits = freezed,
   }) {
     return _then(_value.copyWith(
       qualifications: freezed == qualifications
@@ -726,10 +693,6 @@ class _$JobHighlightsCopyWithImpl<$Res, $Val extends JobHighlights>
       responsibilities: freezed == responsibilities
           ? _value.responsibilities
           : responsibilities // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      benefits: freezed == benefits
-          ? _value.benefits
-          : benefits // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ) as $Val);
   }
@@ -745,8 +708,7 @@ abstract class _$$_JobHighlightsCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'Qualifications') List<String>? qualifications,
-      @JsonKey(name: 'Responsibilities') List<String>? responsibilities,
-      @JsonKey(name: 'Benefits') List<String>? benefits});
+      @JsonKey(name: 'Responsibilities') List<String>? responsibilities});
 }
 
 /// @nodoc
@@ -762,7 +724,6 @@ class __$$_JobHighlightsCopyWithImpl<$Res>
   $Res call({
     Object? qualifications = freezed,
     Object? responsibilities = freezed,
-    Object? benefits = freezed,
   }) {
     return _then(_$_JobHighlights(
       qualifications: freezed == qualifications
@@ -773,10 +734,6 @@ class __$$_JobHighlightsCopyWithImpl<$Res>
           ? _value._responsibilities
           : responsibilities // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      benefits: freezed == benefits
-          ? _value._benefits
-          : benefits // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
     ));
   }
 }
@@ -786,11 +743,9 @@ class __$$_JobHighlightsCopyWithImpl<$Res>
 class _$_JobHighlights with DiagnosticableTreeMixin implements _JobHighlights {
   const _$_JobHighlights(
       {@JsonKey(name: 'Qualifications') final List<String>? qualifications,
-      @JsonKey(name: 'Responsibilities') final List<String>? responsibilities,
-      @JsonKey(name: 'Benefits') final List<String>? benefits})
+      @JsonKey(name: 'Responsibilities') final List<String>? responsibilities})
       : _qualifications = qualifications,
-        _responsibilities = responsibilities,
-        _benefits = benefits;
+        _responsibilities = responsibilities;
 
   factory _$_JobHighlights.fromJson(Map<String, dynamic> json) =>
       _$$_JobHighlightsFromJson(json);
@@ -818,20 +773,9 @@ class _$_JobHighlights with DiagnosticableTreeMixin implements _JobHighlights {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String>? _benefits;
-  @override
-  @JsonKey(name: 'Benefits')
-  List<String>? get benefits {
-    final value = _benefits;
-    if (value == null) return null;
-    if (_benefits is EqualUnmodifiableListView) return _benefits;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'JobHighlights(qualifications: $qualifications, responsibilities: $responsibilities, benefits: $benefits)';
+    return 'JobHighlights(qualifications: $qualifications, responsibilities: $responsibilities)';
   }
 
   @override
@@ -840,8 +784,7 @@ class _$_JobHighlights with DiagnosticableTreeMixin implements _JobHighlights {
     properties
       ..add(DiagnosticsProperty('type', 'JobHighlights'))
       ..add(DiagnosticsProperty('qualifications', qualifications))
-      ..add(DiagnosticsProperty('responsibilities', responsibilities))
-      ..add(DiagnosticsProperty('benefits', benefits));
+      ..add(DiagnosticsProperty('responsibilities', responsibilities));
   }
 
   @override
@@ -852,8 +795,7 @@ class _$_JobHighlights with DiagnosticableTreeMixin implements _JobHighlights {
             const DeepCollectionEquality()
                 .equals(other._qualifications, _qualifications) &&
             const DeepCollectionEquality()
-                .equals(other._responsibilities, _responsibilities) &&
-            const DeepCollectionEquality().equals(other._benefits, _benefits));
+                .equals(other._responsibilities, _responsibilities));
   }
 
   @JsonKey(ignore: true)
@@ -861,8 +803,7 @@ class _$_JobHighlights with DiagnosticableTreeMixin implements _JobHighlights {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_qualifications),
-      const DeepCollectionEquality().hash(_responsibilities),
-      const DeepCollectionEquality().hash(_benefits));
+      const DeepCollectionEquality().hash(_responsibilities));
 
   @JsonKey(ignore: true)
   @override
@@ -883,9 +824,7 @@ abstract class _JobHighlights implements JobHighlights {
       {@JsonKey(name: 'Qualifications')
           final List<String>? qualifications,
       @JsonKey(name: 'Responsibilities')
-          final List<String>? responsibilities,
-      @JsonKey(name: 'Benefits')
-          final List<String>? benefits}) = _$_JobHighlights;
+          final List<String>? responsibilities}) = _$_JobHighlights;
 
   factory _JobHighlights.fromJson(Map<String, dynamic> json) =
       _$_JobHighlights.fromJson;
@@ -896,9 +835,6 @@ abstract class _JobHighlights implements JobHighlights {
   @override
   @JsonKey(name: 'Responsibilities')
   List<String>? get responsibilities;
-  @override
-  @JsonKey(name: 'Benefits')
-  List<String>? get benefits;
   @override
   @JsonKey(ignore: true)
   _$$_JobHighlightsCopyWith<_$_JobHighlights> get copyWith =>
