@@ -36,8 +36,9 @@ mixin _$Job {
   String? get jobDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_is_remote')
   bool? get jobIsRemote => throw _privateConstructorUsedError;
-  @JsonKey(name: 'job_posted_at_datetime_utc')
-  String? get jobPostedAtDatetimeUtc => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString)
+  DateTime? get jobPostedAtDatetimeUtc => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_city')
   String? get jobCity => throw _privateConstructorUsedError;
   @JsonKey(name: 'job_state')
@@ -82,8 +83,8 @@ abstract class $JobCopyWith<$Res> {
           String? jobDescription,
       @JsonKey(name: 'job_is_remote')
           bool? jobIsRemote,
-      @JsonKey(name: 'job_posted_at_datetime_utc')
-          String? jobPostedAtDatetimeUtc,
+      @JsonKey(name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString)
+          DateTime? jobPostedAtDatetimeUtc,
       @JsonKey(name: 'job_city')
           String? jobCity,
       @JsonKey(name: 'job_state')
@@ -170,7 +171,7 @@ class _$JobCopyWithImpl<$Res, $Val extends Job> implements $JobCopyWith<$Res> {
       jobPostedAtDatetimeUtc: freezed == jobPostedAtDatetimeUtc
           ? _value.jobPostedAtDatetimeUtc
           : jobPostedAtDatetimeUtc // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       jobCity: freezed == jobCity
           ? _value.jobCity
           : jobCity // ignore: cast_nullable_to_non_nullable
@@ -242,8 +243,8 @@ abstract class _$$_JobCopyWith<$Res> implements $JobCopyWith<$Res> {
           String? jobDescription,
       @JsonKey(name: 'job_is_remote')
           bool? jobIsRemote,
-      @JsonKey(name: 'job_posted_at_datetime_utc')
-          String? jobPostedAtDatetimeUtc,
+      @JsonKey(name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString)
+          DateTime? jobPostedAtDatetimeUtc,
       @JsonKey(name: 'job_city')
           String? jobCity,
       @JsonKey(name: 'job_state')
@@ -328,7 +329,7 @@ class __$$_JobCopyWithImpl<$Res> extends _$JobCopyWithImpl<$Res, _$_Job>
       jobPostedAtDatetimeUtc: freezed == jobPostedAtDatetimeUtc
           ? _value.jobPostedAtDatetimeUtc
           : jobPostedAtDatetimeUtc // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       jobCity: freezed == jobCity
           ? _value.jobCity
           : jobCity // ignore: cast_nullable_to_non_nullable
@@ -369,23 +370,40 @@ class __$$_JobCopyWithImpl<$Res> extends _$JobCopyWithImpl<$Res, _$_Job>
 @JsonSerializable()
 class _$_Job with DiagnosticableTreeMixin implements _Job {
   const _$_Job(
-      {@JsonKey(name: 'employer_name') this.employerName,
-      @JsonKey(name: 'job_id') this.jobId,
-      @JsonKey(name: 'job_title') this.jobTitle,
-      @JsonKey(name: 'employer_logo') this.employerLogo,
-      @JsonKey(name: 'job_employment_type') this.jobEmploymentType,
-      @JsonKey(name: 'job_apply_link') this.jobApplyLink,
-      @JsonKey(name: 'job_description') this.jobDescription,
-      @JsonKey(name: 'job_is_remote') this.jobIsRemote,
-      @JsonKey(name: 'job_posted_at_datetime_utc') this.jobPostedAtDatetimeUtc,
-      @JsonKey(name: 'job_city') this.jobCity,
-      @JsonKey(name: 'job_state') this.jobState,
-      @JsonKey(name: 'job_country') this.jobCountry,
-      @JsonKey(name: 'job_google_link') this.jobGoogleLink,
-      @JsonKey(name: 'job_min_salary') this.jobMinSalary,
-      @JsonKey(name: 'job_max_salary') this.jobMaxSalary,
-      @JsonKey(name: 'job_salary_currency') this.jobSalaryCurrency,
-      @JsonKey(name: 'job_highlights') this.jobHighlights});
+      {@JsonKey(name: 'employer_name')
+          this.employerName,
+      @JsonKey(name: 'job_id')
+          this.jobId,
+      @JsonKey(name: 'job_title')
+          this.jobTitle,
+      @JsonKey(name: 'employer_logo')
+          this.employerLogo,
+      @JsonKey(name: 'job_employment_type')
+          this.jobEmploymentType,
+      @JsonKey(name: 'job_apply_link')
+          this.jobApplyLink,
+      @JsonKey(name: 'job_description')
+          this.jobDescription,
+      @JsonKey(name: 'job_is_remote')
+          this.jobIsRemote,
+      @JsonKey(name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString)
+          this.jobPostedAtDatetimeUtc,
+      @JsonKey(name: 'job_city')
+          this.jobCity,
+      @JsonKey(name: 'job_state')
+          this.jobState,
+      @JsonKey(name: 'job_country')
+          this.jobCountry,
+      @JsonKey(name: 'job_google_link')
+          this.jobGoogleLink,
+      @JsonKey(name: 'job_min_salary')
+          this.jobMinSalary,
+      @JsonKey(name: 'job_max_salary')
+          this.jobMaxSalary,
+      @JsonKey(name: 'job_salary_currency')
+          this.jobSalaryCurrency,
+      @JsonKey(name: 'job_highlights')
+          this.jobHighlights});
 
   factory _$_Job.fromJson(Map<String, dynamic> json) => _$$_JobFromJson(json);
 
@@ -414,8 +432,9 @@ class _$_Job with DiagnosticableTreeMixin implements _Job {
   @JsonKey(name: 'job_is_remote')
   final bool? jobIsRemote;
   @override
-  @JsonKey(name: 'job_posted_at_datetime_utc')
-  final String? jobPostedAtDatetimeUtc;
+  @JsonKey(
+      name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString)
+  final DateTime? jobPostedAtDatetimeUtc;
   @override
   @JsonKey(name: 'job_city')
   final String? jobCity;
@@ -564,8 +583,8 @@ abstract class _Job implements Job {
           final String? jobDescription,
       @JsonKey(name: 'job_is_remote')
           final bool? jobIsRemote,
-      @JsonKey(name: 'job_posted_at_datetime_utc')
-          final String? jobPostedAtDatetimeUtc,
+      @JsonKey(name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString)
+          final DateTime? jobPostedAtDatetimeUtc,
       @JsonKey(name: 'job_city')
           final String? jobCity,
       @JsonKey(name: 'job_state')
@@ -610,8 +629,9 @@ abstract class _Job implements Job {
   @JsonKey(name: 'job_is_remote')
   bool? get jobIsRemote;
   @override
-  @JsonKey(name: 'job_posted_at_datetime_utc')
-  String? get jobPostedAtDatetimeUtc;
+  @JsonKey(
+      name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString)
+  DateTime? get jobPostedAtDatetimeUtc;
   @override
   @JsonKey(name: 'job_city')
   String? get jobCity;

@@ -40,6 +40,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
         emit(state.copyWith(isLoading: false));
       }
      } catch (e) {
+      print(e);
       emit(state.copyWith(isLoading: false));
      }
   }

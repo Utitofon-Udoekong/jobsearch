@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hired_flutter/constants/utils.dart';
 part 'job_model.freezed.dart';
 part 'job_model.g.dart';
 
@@ -16,7 +17,7 @@ class Job with _$Job {
     @JsonKey(name: 'job_apply_link') String? jobApplyLink,
     @JsonKey(name: 'job_description') String? jobDescription,
     @JsonKey(name: 'job_is_remote') bool? jobIsRemote,
-    @JsonKey(name: 'job_posted_at_datetime_utc') String? jobPostedAtDatetimeUtc,
+    @JsonKey(name: 'job_posted_at_datetime_utc', fromJson: getDateTimeFromUTCString) DateTime? jobPostedAtDatetimeUtc,
     @JsonKey(name: 'job_city') String? jobCity,
     @JsonKey(name: 'job_state') String? jobState,
     @JsonKey(name: 'job_country') String? jobCountry,

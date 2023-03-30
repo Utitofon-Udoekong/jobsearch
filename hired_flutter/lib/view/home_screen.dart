@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hired_flutter/constants/custom_lists.dart';
 import 'package:hired_flutter/constants/theme.dart';
+import 'package:hired_flutter/constants/utils.dart';
 import 'package:hired_flutter/view/cubit/home_cubit.dart';
+import 'package:hired_flutter/view/search/cubit/search_cubit.dart';
+import 'package:hired_flutter/view/search/search.dart';
+import 'package:hired_flutter/view/widgets/circle_loader.dart';
 import 'package:hired_flutter/view/widgets/custom_text_field.dart';
 import 'package:hired_flutter/view/widgets/job_card.dart';
 import 'package:hired_flutter/view/widgets/screen_header_button.dart';
@@ -43,7 +47,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const Expanded(child: CustomTextField()),
+                    Expanded(child: CustomTextField(onChanged: (newQuery) => context
+                      .read<SearchCubit>()
+                      .setSearchQuery(searchQuery: newQuery),)),
                     const SizedBox(
                       width: 10,
                     ),
@@ -54,7 +60,14 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.white
                       ),
                       color: COLORS.tertiary,
-                      onTap: () {},
+                      onTap: () {
+                        final query = context.read<SearchCubit>().state.searchQuery;
+                        if(query.isEmpty) return;
+                        context.read<SearchCubit>().getInitialSearch();
+                        router(context).push(MaterialPageRoute<void>(
+                          builder: (BuildContext context) => const SearchPage(),
+                        ),);
+                      },
                     )
                   ],
                 ),
@@ -75,7 +88,16 @@ class HomeScreen extends StatelessWidget {
                   childAspectRatio: 16 / 5,
                   children: List.generate(cards.length, (index) {
                     final card = cards[index];
-                    return CustomCard(title: card.title, color: card.color);
+                    return CustomCard(title: card.title, color: card.color, onTap: (){
+                      context.read<SearchCubit>().setSearchQuery(searchQuery: card.title);
+                      if(card.title == "Remote"){
+                        context.read<SearchCubit>().setSearchRemote(searchRemote: true);
+                      }
+                      context.read<SearchCubit>().getInitialSearch();
+                      router(context).push(MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const SearchPage(),
+                      ),);
+                    },);
                   }),
                 ),
                 const SizedBox(
@@ -85,21 +107,25 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text("Popular jobs", style: TextStyles.subTitle),
-                    TextButton(onPressed: (){}, child: const Text("Show all", style: TextStyle(fontSize: SIZES.medium, color: COLORS.gray, fontWeight: FONT.medium),))
+                    TextButton(onPressed: (){
+                      context.read<SearchCubit>().setSearchQuery(searchQuery: "Software developer");
+                      router(context).push(MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const SearchPage(),
+                      ),);
+                    }, child: const Text("Show all", style: TextStyle(fontSize: SIZES.medium, color: COLORS.gray, fontWeight: FONT.medium),))
                 ],),
                 const SizedBox(
                   height: SIZES.medium,
                 ),
-                isLoading ? const CircularProgressIndicator() : Column(
+                ElevatedButton(onPressed: () => context.read<HomeCubit>().getPopularJobs(), child: const Text("get data", style: TextStyles.title,)),
+                isLoading ? const CircleLoader() : Column(
                   children: popularJobList.map((job) {
                     return Container(
                       margin: const EdgeInsets.only(bottom: 10),
                       child: JobCard(job: job));
                   }).toList(),
                 ),
-                ElevatedButton(onPressed: (){
-                  // /tData();
-                }, child: const Text("get data", style: TextStyles.title,))
+                
               ],
             ),
           ),

@@ -15,7 +15,8 @@ _$_Job _$$_JobFromJson(Map<String, dynamic> json) => _$_Job(
       jobApplyLink: json['job_apply_link'] as String?,
       jobDescription: json['job_description'] as String?,
       jobIsRemote: json['job_is_remote'] as bool?,
-      jobPostedAtDatetimeUtc: json['job_posted_at_datetime_utc'] as String?,
+      jobPostedAtDatetimeUtc: getDateTimeFromUTCString(
+          json['job_posted_at_datetime_utc'] as String),
       jobCity: json['job_city'] as String?,
       jobState: json['job_state'] as String?,
       jobCountry: json['job_country'] as String?,
@@ -38,7 +39,8 @@ Map<String, dynamic> _$$_JobToJson(_$_Job instance) => <String, dynamic>{
       'job_apply_link': instance.jobApplyLink,
       'job_description': instance.jobDescription,
       'job_is_remote': instance.jobIsRemote,
-      'job_posted_at_datetime_utc': instance.jobPostedAtDatetimeUtc,
+      'job_posted_at_datetime_utc':
+          instance.jobPostedAtDatetimeUtc?.toIso8601String(),
       'job_city': instance.jobCity,
       'job_state': instance.jobState,
       'job_country': instance.jobCountry,

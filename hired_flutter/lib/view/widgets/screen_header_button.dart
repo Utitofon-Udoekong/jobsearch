@@ -3,15 +3,19 @@ import 'package:hired_flutter/constants/theme.dart';
 
 class HeaderIcon extends StatelessWidget {
   final IconData icon;
-  const HeaderIcon({super.key, required this.icon});
+  final void Function()? onTap;
+  const HeaderIcon({super.key, required this.icon, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container( width: 40,
-    height: 40, decoration: BoxDecoration(
-      color: COLORS.gray2,
-      borderRadius: BorderRadius.circular(SIZES.small / 1.25)
-    ), child: Icon(icon, size: 25,));
+    return GestureDetector(
+      onTap: onTap,
+      child: Container( width: 30,
+      height: 30, decoration: BoxDecoration(
+        color: COLORS.gray2,
+        borderRadius: BorderRadius.circular(SIZES.small / 1.25)
+      ), alignment: Alignment.center, child: Icon(icon, size: 20,)),
+    );
   }
 }
 
@@ -29,7 +33,7 @@ class ActionIcon extends StatelessWidget {
       height: 50, decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(SIZES.medium)
-      ), child: icon),
+      ), alignment: Alignment.center, child: icon),
     );
   }
 }
