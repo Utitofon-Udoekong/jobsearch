@@ -36,8 +36,7 @@ class SearchPage extends StatelessWidget {
             onTap: () => router(context).pop(),
           ),
           actions: [
-            HeaderIcon(
-              icon: Icons.filter_alt_rounded,
+            InkWell(
               onTap: () {
                 showFilterBottomSheet(
                   context: context,
@@ -51,8 +50,14 @@ class SearchPage extends StatelessWidget {
                     router(context).pop();
                   }
                 );
-              },
-            )
+              }
+              child: Container( width: 50,
+      height: 30, decoration: BoxDecoration(
+        color: COLORS.gray2,
+        borderRadius: BorderRadius.circular(SIZES.small / 1.25)
+      ), alignment: Alignment.center, child: Icon(Icons.filter_alt_rounded, size: 20,))
+            ),
+            
           ],
         ),
         body: SafeArea(

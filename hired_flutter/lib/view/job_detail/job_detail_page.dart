@@ -3,6 +3,8 @@ import 'package:hired_flutter/constants/theme.dart';
 import 'package:hired_flutter/constants/utils.dart';
 import 'package:hired_flutter/models/job_model.dart';
 import 'package:hired_flutter/view/widgets/screen_header_button.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JobDetailPage extends StatefulWidget {
   final Job job;
@@ -24,23 +26,38 @@ class _JobDetailPageState extends State<JobDetailPage>
 
   @override
   Widget build(BuildContext context) {
+    final Uri url = Uri.parse(widget.job.jobApplyLink!);
+
+     Future<void> openUrl() async {
+        if (!await launchUrl(url)) {
+          throw Exception('Could not launch $url');
+        }
+      }
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: HeaderIcon(
-            icon: Icons.adaptive.arrow_back,
-            onTap: () => router(context).pop(),
-          ),
-          actions: [
-            HeaderIcon(
-              icon: Icons.share_outlined,
-              onTap: () {},
-            )
-          ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: HeaderIcon(
+          icon: Icons.adaptive.arrow_back,
+          onTap: () => router(context).pop(),
         ),
-        body: SafeArea(
-            child: Padding(
+        actions: [
+          
+          InkWell(
+            onTap: (){
+              Share.share(widget.job.jobApplyLink!);
+            },
+            child: Container( width: 50,
+                height: 30, decoration: BoxDecoration(
+                  color: COLORS.gray2,
+                  borderRadius: BorderRadius.circular(SIZES.small / 1.25)
+                ), alignment: Alignment.center, child: const Icon(Icons.share_outlined, size: 20,)),
+          ),
+        ],
+        actionsIconTheme: const IconThemeData(size: 30),
+      ),
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.all(SIZES.large),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,8 +130,8 @@ class _JobDetailPageState extends State<JobDetailPage>
                   isScrollable: true,
                   indicatorSize: TabBarIndicatorSize.tab,
                   indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(SIZES.medium),
-                    color: COLORS.primary),
+                      borderRadius: BorderRadius.circular(SIZES.medium),
+                      color: COLORS.primary),
                   unselectedLabelColor: const Color(0XFFAAA9B8),
                   labelStyle: const TextStyle(
                       fontSize: SIZES.small, fontWeight: FONT.medium),
@@ -136,36 +153,66 @@ class _JobDetailPageState extends State<JobDetailPage>
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: SIZES.large),
-                      padding: const EdgeInsets.all(SIZES.medium),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(SIZES.medium)),
-                      child: SingleChildScrollView(
+                    SingleChildScrollView(
+                      child: Container(
+                        margin: const EdgeInsets.only(top: SIZES.large),
+                        padding: const EdgeInsets.all(SIZES.medium),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(SIZES.medium)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("About the job:", style: TextStyles.title.copyWith(fontSize: SIZES.large),),
-                            const SizedBox(height: SIZES.small,),
-                            Text(widget.job.jobDescription ?? 'N/A', style: const TextStyle(
-                              fontSize: SIZES.medium - 2,
-                              color: COLORS.gray,
-                              fontWeight: FONT.regular,
-                            ),)
+                            Text(
+                              "About the job:",
+                              style: TextStyles.title
+                                  .copyWith(fontSize: SIZES.large),
+                            ),
+                            const SizedBox(
+                              height: SIZES.small,
+                            ),
+                            Text(
+                              widget.job.jobDescription ?? 'N/A',
+                              style: const TextStyle(
+                                fontSize: SIZES.medium - 2,
+                                color: COLORS.gray,
+                                fontWeight: FONT.regular,
+                              ),
+                            )
                           ],
                         ),
                       ),
                     ),
-                    TabContent(title: "Qualifications", data: widget.job.jobHighlights!.qualifications ?? ['N/A']),
-                    TabContent(title: "Responsibilities", data: widget.job.jobHighlights!.responsibilities ?? ['N/A']),
+                    TabContent(
+                        title: "Qualifications",
+                        data: widget.job.jobHighlights!.qualifications ??
+                            ['N/A']),
+                    TabContent(
+                        title: "Responsibilities",
+                        data: widget.job.jobHighlights!.responsibilities ??
+                            ['N/A']),
                   ],
                 ),
               )
             ],
           ),
-        )));
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        padding: const EdgeInsets.all(SIZES.large),
+        child: ElevatedButton(
+                  onPressed: () => openUrl, style: ButtonStyle(
+                  padding: const MaterialStatePropertyAll(EdgeInsets.all(10)),
+                  backgroundColor: const MaterialStatePropertyAll(COLORS.tertiary),
+                  side: const MaterialStatePropertyAll(BorderSide.none),
+                  fixedSize: MaterialStatePropertyAll(Size(getScreenWidth(context), 55)),
+                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(SIZES.medium)))
+                ), child: const Text("Apply for job", style: TextStyle(color: Colors.white, fontSize: SIZES.medium, fontWeight: FONT.bold),),)
+      ),
+    );
   }
+
+ 
 }
 
 class TabContent extends StatelessWidget {
@@ -175,49 +222,48 @@ class TabContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-                        margin: const EdgeInsets.only(top: SIZES.large),
-                        padding: const EdgeInsets.all(SIZES.medium),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(SIZES.medium)),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                title,
-                                style: TextStyles.title
-                                    .copyWith(fontSize: SIZES.large),
-                              ),
-                              ...List.generate(
-                                  data.length, (index) {
-                                return Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      vertical: SIZES.small),
-                                  child: Row(children: [
-                                    Container(
-                                      width: 6,
-                                      height: 6,
-                                      decoration: BoxDecoration(
-                                          color: COLORS.gray2,
-                                          borderRadius: BorderRadius.circular(6)),
-                                    ),
-                                    const SizedBox(width: SIZES.small,),
-                                    Expanded(
-                                      child: Text(data[index], style: const TextStyle(
-                                        fontSize: SIZES.medium - 2,
-                                        color: COLORS.gray,
-                                        fontWeight: FONT.regular
-                                      ), softWrap: true),
-                                    )
-                                  ]),
-                                );
-                              })
-                            ],
-                          ),
-                        ),
-                      );
+    return SingleChildScrollView(
+      child: Container(
+        margin: const EdgeInsets.only(top: SIZES.large),
+        padding: const EdgeInsets.all(SIZES.medium),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(SIZES.medium)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyles.title.copyWith(fontSize: SIZES.large),
+            ),
+            ...List.generate(data.length, (index) {
+              return Container(
+                margin: const EdgeInsets.symmetric(vertical: SIZES.small),
+                child: Row(children: [
+                  Container(
+                    width: 6,
+                    height: 6,
+                    decoration: BoxDecoration(
+                        color: COLORS.gray2,
+                        borderRadius: BorderRadius.circular(6)),
+                  ),
+                  const SizedBox(
+                    width: SIZES.small,
+                  ),
+                  Expanded(
+                    child: Text(data[index],
+                        style: const TextStyle(
+                            fontSize: SIZES.medium - 2,
+                            color: COLORS.gray,
+                            fontWeight: FONT.regular),
+                        softWrap: true),
+                  )
+                ]),
+              );
+            })
+          ],
+        ),
+      ),
+    );
   }
 }
-
