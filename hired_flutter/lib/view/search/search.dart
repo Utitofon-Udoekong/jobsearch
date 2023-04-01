@@ -50,7 +50,7 @@ class SearchPage extends StatelessWidget {
                     router(context).pop();
                   }
                 );
-              }
+              },
               child: Container( width: 50,
       height: 30, decoration: BoxDecoration(
         color: COLORS.gray2,
